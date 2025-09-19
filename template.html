@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Portfolio</title>
+    <!-- We're using Tailwind CSS to make everything look good without a separate file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /*
+        This is a special style for the background.
+        It puts a picture in the back and makes it cover the whole screen.
+        */
+        .hero-background {
+            background-image: url('https://placehold.co/1920x1080/4F46E5/ffffff?text=Your+Background+Image');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* This is for the scrolling effect */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!--
+    This is the first part of the website you see.
+    Think of it as the welcome page!
+    -->
+    <header class="hero-background min-h-screen flex items-center justify-center relative">
+        <!--
+        This is a dark, see-through layer on top of the background picture.
+        It helps the words in front stand out.
+        -->
+        <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+
+        <!--
+        This is the main box for your introduction.
+        It's in the middle of the screen and has your photo and a little bit about you.
+        -->
+        <div class="relative z-10 p-8 m-4 max-w-2xl bg-gray-800 bg-opacity-80 rounded-3xl shadow-2xl backdrop-blur-sm transform transition-all duration-500 hover:scale-105">
+            <div class="flex flex-col items-center text-center space-y-4">
+                <img class="rounded-full w-32 h-32 md:w-48 md:h-48 border-4 border-yellow-400 object-cover" src="https://placehold.co/250x250/FDE047/000000?text=Your+Photo" alt="Your Profile Photo">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-yellow-400">Hello, I'm Your Name!</h1>
+                <p class="text-lg md:text-xl text-gray-200 leading-relaxed">I am a creative person who loves to build things and share my work with the world. I hope you enjoy exploring my projects below!</p>
+                <!-- This button is just a friendly way to tell people to scroll down -->
+                <a href="#portfolio" class="inline-block mt-6 px-8 py-3 bg-yellow-400 text-gray-900 font-bold rounded-full shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50">View My Work</a>
+            </div>
+        </div>
+    </header>
+
+    <!--
+    This is the second part of the website, where you show your projects.
+    It's a grid of little boxes.
+    -->
+    <main id="portfolio" class="py-16 px-4 md:px-8">
+        <h2 class="text-center text-4xl font-extrabold mb-12 text-yellow-400">My Projects</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+            <!--
+            This is one of the little project boxes.
+            I've made a few for you to start with.
+            -->
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/10B981/ffffff?text=Project+1+Photo" alt="Project 1">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Amazing Project 1</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/F97316/ffffff?text=Project+2+Photo" alt="Project 2">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Cool Project 2</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/EF4444/ffffff?text=Project+3+Photo" alt="Project 3">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Creative Project 3</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/22C55E/ffffff?text=Project+4+Photo" alt="Project 4">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Awesome Project 4</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/3B82F6/ffffff?text=Project+5+Photo" alt="Project 5">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Fantastic Project 5</h3>
+                </div>
+            </div>
+
+            <div class="portfolio-item group relative cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-transform transform hover:scale-105" data-video-url="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+                <img class="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-110" src="https://placehold.co/600x400/8B5CF6/ffffff?text=Project+6+Photo" alt="Project 6">
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-end p-6">
+                    <h3 class="text-2xl font-bold text-white transition-transform transform group-hover:-translate-y-2">Great Project 6</h3>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!--
+    This is the new contact section at the bottom!
+    It's a footer for all your contact information.
+    -->
+    <footer class="py-16 px-4 md:px-8 bg-gray-800 text-center">
+        <h2 class="text-4xl font-extrabold mb-8 text-yellow-400">Get in Touch</h2>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+            I would love to connect and talk about new opportunities or projects. Feel free to reach out to me via email or social media!
+        </p>
+        <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8">
+            <a href="mailto:your.email@example.com" class="flex items-center space-x-2 text-xl text-gray-200 hover:text-yellow-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>your.email@example.com</span>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-xl text-gray-200 hover:text-yellow-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.766s.784-1.766 1.75-1.766 1.75.79 1.75 1.766-.783 1.766-1.75 1.766zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+        </div>
+    </footer>
+
+
+    <!--
+    This is the "magic trick" part! It's a big, hidden box that will appear when you click on a project.
+    -->
+    <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full h-full md:h-auto">
+            <!-- This is the video player inside the big box -->
+            <video id="video-player" class="w-full h-auto rounded-xl shadow-2xl" controls loop></video>
+            <!-- This is the 'X' button to close the big box -->
+            <button id="close-btn" class="absolute top-4 right-4 text-white text-3xl font-bold p-2 bg-gray-700 bg-opacity-50 rounded-full hover:bg-opacity-70 transition-colors">&times;</button>
+        </div>
+    </div>
+
+    <!--
+    This is the "brain" of the website.
+    It's JavaScript code that makes the blocks clickable.
+    -->
+    <script>
+        // We find all the little boxes on the page
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        // We find the big, hidden box and the video player inside it
+        const videoModal = document.getElementById('video-modal');
+        const videoPlayer = document.getElementById('video-player');
+        // We find the close button
+        const closeBtn = document.getElementById('close-btn');
+
+        // We listen for a 'click' on each of the little boxes
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // When a box is clicked, we get the video link from it
+                const videoUrl = item.getAttribute('data-video-url');
+                
+                // We change the video player to use that video link
+                videoPlayer.src = videoUrl;
+                
+                // We show the big hidden box
+                videoModal.classList.remove('hidden');
+                
+                // And we start playing the video!
+                videoPlayer.play();
+            });
+        });
+
+        // We listen for a 'click' on the close button
+        closeBtn.addEventListener('click', () => {
+            // When the button is clicked, we hide the big box
+            videoModal.classList.add('hidden');
+            
+            // We also stop the video so it doesn't keep playing
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0; // This resets the video to the beginning
+        });
+    </script>
+
+</body>
+</html>
