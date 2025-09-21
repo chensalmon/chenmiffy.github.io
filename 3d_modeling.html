@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Modeling Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /*
+        This is a special rule for the photo showcase.
+        It hides the scrollbar so it looks cleaner.
+        */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+            scrollbar-width: none;  /* For Firefox */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <!-- This navigation bar is for the 3D Modeling page -->
+    <nav class="fixed top-0 left-0 w-full z-20 bg-gray-900 bg-opacity-70 backdrop-blur-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-yellow-400">Your Name</a>
+            <div class="flex space-x-6 text-lg">
+                <!-- This link goes back to the main portfolio page -->
+                <a href="portfolio.html" class="hover:text-yellow-400 transition-colors">Home</a>
+                <a href="#" class="hover:text-yellow-400 transition-colors">3D Modeling</a>
+                <a href="portfolio.html#contact" class="hover:text-yellow-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- The main header for this page -->
+    <header class="bg-gray-800 pt-32 pb-16 px-4 md:px-8 text-center">
+        <h1 class="text-5xl font-extrabold text-yellow-400">My 3D Modeling Projects</h1>
+        <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto">
+            Welcome to my collection of 3D models and renderings. I enjoy bringing ideas to life in a virtual space.
+        </p>
+    </header>
+
+    <!--
+    This is the new section for the horizontal photo gallery!
+    It now has a special ID to make it move on its own.
+    -->
+    <section class="py-16 px-4 md:px-8">
+        <h2 class="text-center text-4xl font-extrabold mb-8 text-yellow-400">Photo Showcase</h2>
+        <div id="scrolling-gallery" class="flex flex-nowrap overflow-x-auto space-x-6 px-4 py-6 max-w-7xl mx-auto hide-scrollbar">
+            <!--
+            Each of these is a single photo block.
+            You can add more by copying and pasting these!
+            -->
+            <div class="flex-shrink-0 w-96 rounded-xl overflow-hidden shadow-xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x400/93C5FD/000000?text=3D+Photo+1" class="object-cover w-full h-auto" alt="3D Model Photo 1">
+            </div>
+            <div class="flex-shrink-0 w-96 rounded-xl overflow-hidden shadow-xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x400/F0ABFC/000000?text=3D+Photo+2" class="object-cover w-full h-auto" alt="3D Model Photo 2">
+            </div>
+            <div class="flex-shrink-0 w-96 rounded-xl overflow-hidden shadow-xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x400/A78BFA/000000?text=3D+Photo+3" class="object-cover w-full h-auto" alt="3D Model Photo 3">
+            </div>
+            <div class="flex-shrink-0 w-96 rounded-xl overflow-hidden shadow-xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x400/FECACA/000000?text=3D+Photo+4" class="object-cover w-full h-auto" alt="3D Model Photo 4">
+            </div>
+            <div class="flex-shrink-0 w-96 rounded-xl overflow-hidden shadow-xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x400/E5E7EB/000000?text=3D+Photo+5" class="object-cover w-full h-auto" alt="3D Model Photo 5">
+            </div>
+        </div>
+    </section>
+
+    <!--
+    This is the main area for your projects.
+    The blocks have a unique "square oval" shape!
+    -->
+    <main class="py-16 px-4 md:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+            <!-- Example project block -->
+            <div class="bg-gray-800 p-8 rounded-[40px] shadow-2xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x600/6B46C1/ffffff?text=3D+Model+1" class="w-full h-auto rounded-[30px] object-cover mb-4" alt="3D Model 1">
+                <h3 class="text-3xl font-bold text-yellow-400 mb-2">Futuristic Spaceship</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    This model was created for a personal project, focusing on a sleek design and realistic texture.
+                    The goal was to create a sense of speed and power while maintaining a clean, elegant silhouette.
+                </p>
+            </div>
+
+            <!-- Another example project block -->
+            <div class="bg-gray-800 p-8 rounded-[40px] shadow-2xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x600/F6AD55/000000?text=3D+Model+2" class="w-full h-auto rounded-[30px] object-cover mb-4" alt="3D Model 2">
+                <h3 class="text-3xl font-bold text-yellow-400 mb-2">Detailed Character Bust</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    A character study with an emphasis on expressive facial features and intricate armor. I used sculpting techniques to capture every fine detail.
+                </p>
+            </div>
+
+            <!-- You can add more blocks here! -->
+            <div class="bg-gray-800 p-8 rounded-[40px] shadow-2xl transition-transform transform hover:scale-105">
+                <img src="https://placehold.co/600x600/38B2AC/ffffff?text=3D+Model+3" class="w-full h-auto rounded-[30px] object-cover mb-4" alt="3D Model 3">
+                <h3 class="text-3xl font-bold text-yellow-400 mb-2">Vintage Radio Render</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    This project was a study in materials and lighting, aiming for a photorealistic render of a retro object.
+                </p>
+            </div>
+            
+        </div>
+    </main>
+
+    <script>
+        // We find the special photo gallery section by its ID
+        const gallery = document.getElementById('scrolling-gallery');
+
+        // This is a little magic trick to make the loop look smooth!
+        // We make a copy of all the photos and put them at the end.
+        const photosCopy = gallery.innerHTML;
+        gallery.innerHTML += photosCopy;
+
+        let scrollSpeed = 0.6; // This controls how fast the photos move. Change this number to make it faster or slower!
+        let scrollPosition = 0;
+
+        // This is the "movie director" function that makes the photos move
+        function animateScroll() {
+            scrollPosition += scrollSpeed;
+            // We move the photos horizontally by this amount
+            gallery.scrollLeft = scrollPosition;
+
+            // This is the "teleport" part of the magic!
+            // When the photos have moved past the first copy, we teleport them back to the start.
+            // We divide the scrollWidth by 2 because we have two copies of the photos.
+            if (scrollPosition >= gallery.scrollWidth / 2) {
+                scrollPosition = 0;
+            }
+
+            // This tells the browser to run this function over and over again for a smooth animation
+            requestAnimationFrame(animateScroll);
+        }
+
+        // We tell the movie director to start the show!
+        window.onload = function() {
+            animateScroll();
+        }
+    </script>
+</body>
+</html>

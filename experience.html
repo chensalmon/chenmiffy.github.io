@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience • Your Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Core sizes for leaves (bubbles) */
+    :root {
+      --leaf-size: 108px;     /* desktop leaf diameter */
+      --leaf-gap: 120px;      /* distance from trunk to leaf center (desktop) */
+      --connector-thick: 2px; /* connector thickness */
+      --header-h: 64px;       /* fixed header height (16 * 4) */
+    }
+
+    /* Flip card leaf */
+    .leaf { width: var(--leaf-size); height: var(--leaf-size); perspective: 1000px; position: relative; border-radius: 9999px; }
+    .leaf-inner { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform .6s; border-radius: inherit; box-shadow: 0 10px 25px rgba(0,0,0,.14); }
+    .leaf:hover .leaf-inner, .leaf.flipped .leaf-inner { transform: rotateY(180deg); }
+    .leaf-face { position: absolute; inset: 0; border-radius: inherit; backface-visibility: hidden; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .leaf-front img { width: 100%; height: 100%; object-fit: cover; }
+    .leaf-back { transform: rotateY(180deg); background: rgba(23,23,23,.95); color: #fff; padding: .6rem; text-align: center; font-size: .82rem; line-height: 1.1rem; }
+
+    /* Desktop trunk (horizontal) — positioned lower to avoid top overlap */
+    .trunk-horizontal {
+      position: absolute; left: 0; right: 0; top: 58%;
+      height: 4px; transform: translateY(-50%);
+      background: rgb(163 163 163); /* neutral-400 */
+      border-radius: 9999px;
+    }
+    /* Desktop connectors */
+    .connector {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: var(--connector-thick); background: rgb(115 115 115); /* neutral-500 */
+    }
+    .connector.top { bottom: 0; }
+    .connector.bottom { top: 0; }
+
+    /* Mobile vertical trunk + twig connector */
+    .trunk-vertical { position: absolute; top: 0; bottom: 0; left: 0.75rem; width: 3px; background: rgb(163 163 163); border-radius: 9999px; }
+    .twig { height: var(--connector-thick); background: rgb(115 115 115); }
+
+    /* Detail sections should not hide behind fixed header when scrolled to */
+    .detail-anchor { scroll-margin-top: calc(var(--header-h) + 24px); }
+
+    /* Reduced motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
+
+    /* Small screens leaf size */
+    @media (max-width: 767px) { :root { --leaf-size: 84px; } }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <!-- Fixed top nav that links back to portfolio.html -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-gray-900/80 backdrop-blur border-b border-white/10">
+    <div class="max-w-7xl mx-auto h-16 px-4 md:px-8 flex items-center justify-between">
+      <a href="portfolio.html" class="inline-flex items-center gap-3 group" aria-label="Back to Portfolio">
+        <span class="h-2.5 w-2.5 rounded-full bg-yellow-400 group-hover:scale-125 transition"></span>
+        <span class="text-xl font-bold tracking-tight text-yellow-400">Your Name</span>
+        <span class="hidden sm:inline text-sm text-gray-300 group-hover:text-white transition">/ Experience</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="portfolio.html" class="text-gray-300 hover:text-yellow-400">Home</a>
+        <a href="3d_modeling.html" class="text-gray-300 hover:text-yellow-400">3D Modeling</a>
+        <a href="#details" class="text-gray-300 hover:text-yellow-400">Details</a>
+      </div>
+      <a href="portfolio.html" class="md:hidden text-sm px-3 py-1.5 rounded-lg bg-yellow-400 text-gray-900 font-semibold">Back</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="pt-28 pb-10 text-center px-4">
+    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-yellow-400">Experience & Education</h1>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 md:px-8 pb-20">
+    <!-- Desktop layout (horizontal trunk) -->
+    <section class="relative hidden md:block pt-8">
+      <div class="trunk-horizontal"></div>
+
+      <!-- Grid for leaves; duplicate <li> to add more items -->
+      <ul class="relative grid grid-cols-3 gap-8">
+        <!-- ITEM 1 (above) -->
+        <li class="relative col-span-1">
+          <span class="connector top h-[110px] bg-gray-500"></span>
+          <button class="leaf -translate-y-[var(--leaf-gap)] focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300 mx-auto block"
+                  aria-label="Job Title — Company" data-target="#exp-1">
+            <div class="leaf-inner rounded-full">
+              <div class="leaf-face leaf-front">
+                <img src="https://picsum.photos/400/400?random=101" alt="Job photo 1">
+              </div>
+              <div class="leaf-face leaf-back">
+                <div><strong>Job Title</strong><br>Company • 2022–Present</div>
+              </div>
+            </div>
+          </button>
+        </li>
+
+        <!-- ITEM 2 (below) -->
+        <li class="relative col-span-1">
+          <span class="connector bottom h-[110px] bg-gray-500"></span>
+          <button class="leaf translate-y-[var(--leaf-gap)] focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300 mx-auto block"
+                  aria-label="Previous Job — Company" data-target="#exp-2">
+            <div class="leaf-inner rounded-full">
+              <div class="leaf-face leaf-front">
+                <img src="https://picsum.photos/400/400?random=102" alt="Job photo 2">
+              </div>
+              <div class="leaf-face leaf-back">
+                <div><strong>Previous Job</strong><br>Company • 2020–2022</div>
+              </div>
+            </div>
+          </button>
+        </li>
+
+        <!-- ITEM 3 (above) -->
+        <li class="relative col-span-1">
+          <span class="connector top h-[110px] bg-gray-500"></span>
+          <button class="leaf -translate-y-[var(--leaf-gap)] focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300 mx-auto block"
+                  aria-label="B.S. — University" data-target="#exp-3">
+            <div class="leaf-inner rounded-full">
+              <div class="leaf-face leaf-front">
+                <img src="https://picsum.photos/400/400?random=103" alt="University photo">
+              </div>
+              <div class="leaf-face leaf-back">
+                <div><strong>Bachelor of Science</strong><br>University • 2016–2020</div>
+              </div>
+            </div>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Mobile layout (vertical trunk) -->
+    <section class="relative md:hidden mt-4">
+      <div class="trunk-vertical"></div>
+      <ol class="space-y-8 relative">
+        <!-- MOBILE ITEM 1 -->
+        <li class="relative ps-8">
+          <div class="absolute left-3 top-1/2 -translate-y-1/2 w-6 twig"></div>
+          <div class="flex items-center gap-4">
+            <button class="leaf focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300" aria-label="Job Title — Company" data-target="#exp-1">
+              <div class="leaf-inner rounded-full">
+                <div class="leaf-face leaf-front">
+                  <img src="https://picsum.photos/400/400?random=101" alt="Job photo 1">
+                </div>
+                <div class="leaf-face leaf-back">
+                  <div><strong>Job Title</strong><br>Company • 2022–Present</div>
+                </div>
+              </div>
+            </button>
+            <div class="text-sm text-gray-200">
+              <div class="font-semibold">Job Title — Company</div>
+              <div class="text-gray-400">2022–Present</div>
+            </div>
+          </div>
+        </li>
+
+        <!-- MOBILE ITEM 2 -->
+        <li class="relative ps-8">
+          <div class="absolute left-3 top-1/2 -translate-y-1/2 w-6 twig"></div>
+          <div class="flex items-center gap-4">
+            <button class="leaf focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300" aria-label="Previous Job — Company" data-target="#exp-2">
+              <div class="leaf-inner rounded-full">
+                <div class="leaf-face leaf-front">
+                  <img src="https://picsum.photos/400/400?random=102" alt="Job photo 2">
+                </div>
+                <div class="leaf-face leaf-back">
+                  <div><strong>Previous Job</strong><br>Company • 2020–2022</div>
+                </div>
+              </div>
+            </button>
+            <div class="text-sm text-gray-200">
+              <div class="font-semibold">Previous Job — Company</div>
+              <div class="text-gray-400">2020–2022</div>
+            </div>
+          </div>
+        </li>
+
+        <!-- MOBILE ITEM 3 -->
+        <li class="relative ps-8">
+          <div class="absolute left-3 top-1/2 -translate-y-1/2 w-6 twig"></div>
+          <div class="flex items-center gap-4">
+            <button class="leaf focus:outline-none focus-visible:ring-4 focus-visible:ring-yellow-300" aria-label="B.S. — University" data-target="#exp-3">
+              <div class="leaf-inner rounded-full">
+                <div class="leaf-face leaf-front">
+                  <img src="https://picsum.photos/400/400?random=103" alt="University photo">
+                </div>
+                <div class="leaf-face leaf-back">
+                  <div><strong>Bachelor of Science</strong><br>University • 2016–2020</div>
+                </div>
+              </div>
+            </button>
+            <div class="text-sm text-gray-200">
+              <div class="font-semibold">Bachelor of Science — University</div>
+              <div class="text-gray-400">2016–2020</div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Details Section ===== -->
+    <section id="details" class="mt-20 space-y-12">
+      <!-- Detail 1 -->
+      <article id="exp-1" class="detail-anchor rounded-3xl bg-gray-800/60 border border-white/10 p-6 md:p-8">
+        <header class="flex items-center gap-4">
+          <img class="w-16 h-16 rounded-full object-cover" src="https://picsum.photos/200/200?random=201" alt="Logo 1">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold">Job Title — Company</h2>
+            <p class="text-gray-400 text-sm">2022–Present • Location</p>
+          </div>
+        </header>
+        <ul class="mt-4 list-disc ms-6 space-y-2 text-gray-200">
+          <li>Led feature <strong>X</strong> from concept to launch; improved KPI by <strong>+24%</strong>.</li>
+          <li>Collaborated with design, data, and backend in a 5-person squad; delivered on time.</li>
+          <li>Stack: React, TypeScript, Tailwind, Next.js, Node.</li>
+          <li>Selected work: <a class="text-yellow-400 hover:underline" href="#" target="_blank" rel="noopener">Case study link</a>.</li>
+        </ul>
+      </article>
+
+      <!-- Detail 2 -->
+      <article id="exp-2" class="detail-anchor rounded-3xl bg-gray-800/60 border border-white/10 p-6 md:p-8">
+        <header class="flex items-center gap-4">
+          <img class="w-16 h-16 rounded-full object-cover" src="https://picsum.photos/200/200?random=202" alt="Logo 2">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold">Previous Job — Company</h2>
+            <p class="text-gray-400 text-sm">2020–2022 • Location</p>
+          </div>
+        </header>
+        <ul class="mt-4 list-disc ms-6 space-y-2 text-gray-200">
+          <li>Shipped <strong>Project Y</strong>; reduced support tickets by <strong>35%</strong>.</li>
+          <li>Introduced design tokens + docs; sped up UI delivery by 20%.</li>
+          <li>Stack: Vue, SCSS, Storybook, Express.</li>
+          <li>Selected work: <a class="text-yellow-400 hover:underline" href="#" target="_blank" rel="noopener">Demo link</a>.</li>
+        </ul>
+      </article>
+
+      <!-- Detail 3 -->
+      <article id="exp-3" class="detail-anchor rounded-3xl bg-gray-800/60 border border-white/10 p-6 md:p-8">
+        <header class="flex items-center gap-4">
+          <img class="w-16 h-16 rounded-full object-cover" src="https://picsum.photos/200/200?random=203" alt="Logo 3">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold">Bachelor of Science — University</h2>
+            <p class="text-gray-400 text-sm">2016–2020 • Department</p>
+          </div>
+        </header>
+        <ul class="mt-4 list-disc ms-6 space-y-2 text-gray-200">
+          <li>Thesis: <em>Title about Z</em> — published in XYZ Conference.</li>
+          <li>Dean’s List 2018–2020; teaching assistant for Human-Computer Interaction.</li>
+          <li>Clubs: Robotics, Design.</li>
+          <li>Selected work: <a class="text-yellow-400 hover:underline" href="#" target="_blank" rel="noopener">Project link</a>.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="py-12 px-4 md:px-8 bg-gray-800/70 border-t border-white/10">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-300">Want the full story? Head back to <a class="text-yellow-400 hover:underline" href="portfolio.html">portfolio.html</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Flip + scroll behavior
+    const headerOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
+
+    function scrollToTarget(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      // Use built-in smooth scroll; detail-anchor uses scroll-margin-top to offset header
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Optional: focus for accessibility after scroll ends
+      setTimeout(() => {
+        el.setAttribute('tabindex', '-1');
+        el.focus({ preventScroll: true });
+      }, 400);
+    }
+
+    // Enable flipping and click-to-scroll on all leaves
+    document.querySelectorAll('.leaf').forEach((leaf) => {
+      leaf.setAttribute('tabindex', '0');
+
+      // Flip on hover/tap via CSS; we also persist flip on click for mobile
+      leaf.addEventListener('click', (e) => {
+        leaf.classList.toggle('flipped');
+        const target = leaf.getAttribute('data-target');
+        if (target) scrollToTarget(target);
+      });
+
+      // Keyboard support
+      leaf.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          leaf.click();
+        }
+      });
+    });
+
+    // If landing with a hash (deep link) like #exp-2, scroll to it on load
+    window.addEventListener('load', () => {
+      if (location.hash) {
+        // small timeout ensures layout is ready (especially images)
+        setTimeout(() => scrollToTarget(location.hash), 100);
+      }
+    });
+
+    // Optional: highlight the detail block currently in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        entry.target.classList.toggle('ring-2', entry.isIntersecting);
+        entry.target.classList.toggle('ring-yellow-400', entry.isIntersecting);
+        entry.target.classList.toggle('ring-offset-2', entry.isIntersecting);
+        entry.target.classList.toggle('ring-offset-gray-900', entry.isIntersecting);
+      });
+    }, { threshold: 0.45 });
+
+    document.querySelectorAll('.detail-anchor').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
